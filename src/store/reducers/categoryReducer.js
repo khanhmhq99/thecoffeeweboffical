@@ -8,7 +8,8 @@ const categoryReducer = (state = initState, action) => {
         case 'FETCH_CATEGORIES':
             return {
                 ...state,
-                categories: action.categories
+                categories: action.categories,
+                status: null
             }
         case 'DELETE_CATEGORY':
             let newCategories = state.categories.filter(category => {
@@ -16,12 +17,14 @@ const categoryReducer = (state = initState, action) => {
             });
             return {
                 ...state,
-                categories: newCategories
+                categories: newCategories,
+                status: null
             }
         case 'CREATE_CATEGORY':
             return {
                 ...state,
-                categories: [...state.categories, action.category]
+                categories: [...state.categories, action.category],
+                status: 'create'
             }
         case 'UPDATE_CATEGORY':
             const index = state.categories.findIndex(category => category.categoryId === action.category.categoryId);
