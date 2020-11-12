@@ -1,0 +1,1 @@
+export const API_URL = 'https://coffee-shop-api.azurewebsites.net/api/v1';
