@@ -42,7 +42,7 @@ class ProductEditPage extends Component {
     }
 
     componentDidUpdate() {
-        console.log('this.props', this.props);
+        // console.log('this.props', this.props);
         if (this.props.status === 'updated')
             this.props.history.replace('/product');
 
@@ -122,7 +122,7 @@ class ProductEditPage extends Component {
                         <Link to="/product" class="waves-effect grey btn z-depth-0 mr-10">
                             Cancel
                         </Link>
-                        <button className="btn waves-effect orange darken-4 z-depth-0">{this.state.updating ? 'Loading...' : 'Update'}</button>
+                        <button className="btn waves-effect orange darken-4 z-depth-0">{this.state.updating ? 'Updating...' : 'Update'}</button>
                         {/* <div className="red-text center">
                             {authError ? <p>{authError}</p> : null}
                         </div> */}

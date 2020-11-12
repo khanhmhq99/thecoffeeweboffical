@@ -1,5 +1,6 @@
 const initState = {
-    categories: []
+    categories: [],
+    status: null
 }
 
 const categoryReducer = (state = initState, action) => {
@@ -23,14 +24,15 @@ const categoryReducer = (state = initState, action) => {
                 categories: [...state.categories, action.category]
             }
         case 'UPDATE_CATEGORY':
-            const index = state.categories.findIndex(category => category.categoryId !== action.category.categoryId);
+            const index = state.categories.findIndex(category => category.categoryId === action.category.categoryId);
 
             const newList = state.categories
 
             newList[index] = action.category
             return {
                 ...state,
-                categories: newList
+                categories: [...newList],
+                status: 'updated'
             }
 
         default:

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Link, Redirect} from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { getCategoryRequest, updateCategoryRequest } from '../store/actions/categoryAction'
 import { connect } from 'react-redux'
+import { findAllByDisplayValue } from '@testing-library/react'
 
 class CategoryEditPage extends Component {
 
@@ -11,7 +12,8 @@ class CategoryEditPage extends Component {
         insBy: '',
         insDatetime: '',
         updBy: '',
-        updDatetime: ''
+        updDatetime: '',
+        updating: false
     }
 
     componentDidMount() {
@@ -39,6 +41,13 @@ class CategoryEditPage extends Component {
         })
     }
 
+    componentDidUpdate() {
+        if (this.props.updateStatus === 'updated') {
+            this.props.history.replace('/category')
+        }
+
+    }
+
     handleSubmit = async (e) => {
         e.preventDefault();
         var category = {
@@ -50,7 +59,10 @@ class CategoryEditPage extends Component {
             updDatetime: this.state.updDatetime
         }
         await this.props.updateCategory(category);
-        this.props.history.replace('/category')
+        this.setState({
+            updating: true
+        })
+        // this.props.history.replace('/category')
     }
 
     render() {
@@ -88,7 +100,8 @@ const mapStateToProps = state => {
     // console.log(state);
     return {
         categoryEditing: state.categoryEditing,
-        user: state.auth.user
+        user: state.auth.user,
+        updateStatus: state.category.status
     }
 }
 
