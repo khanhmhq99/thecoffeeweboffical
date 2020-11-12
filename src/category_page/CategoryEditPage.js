@@ -88,7 +88,7 @@ class CategoryEditPage extends Component {
                         <Link to="/category" className="waves-effect grey btn z-depth-0 mr-10">
                             Back
                         </Link>
-                        <button className="btn waves-effect orange darken-4 z-depth-0">Update</button>
+                        <button className="btn waves-effect orange darken-4 z-depth-0">{this.state.updating ? 'Updating...' : 'Update'}</button>
                     </div>
                 </form>
             </div>
