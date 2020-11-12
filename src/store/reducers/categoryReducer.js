@@ -20,7 +20,7 @@ const categoryReducer = (state = initState, action) => {
         case 'CREATE_CATEGORY':
             return {
                 ...state,
-                categories: [state.categories, action.category]
+                categories: [...state.categories, action.category]
             }
         case 'UPDATE_CATEGORY':
             const index = state.categories.findIndex(category => category.categoryId !== action.category.categoryId);
